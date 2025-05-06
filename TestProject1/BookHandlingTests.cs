@@ -121,7 +121,12 @@ public class BookHandlingTests
     [DataRow("GEORGE ORWELL")]
     public void SearchBooks_FindByProperty_Author_IsNotCaseSensitive(string author)
     {
-
+        var books = _system.SearchByAuthor(author);
+        var expected = books
+                       .Where(b => b.Author == author)
+                       .ToList();
+        
+        CollectionAssert.AreEqual(expected, books);
     }
 
     [TestMethod]
@@ -130,7 +135,12 @@ public class BookHandlingTests
     [DataRow("PRIDE AND PREJUDICE")]
     public void SearchBooks_FindByProperty_Title_IsNotCaseSensitive(string title)
     {
+        var books = _system.SearchByTitle(title);
+        var expected = books
+                       .Where(b => b.Title == title)
+                       .ToList();
 
+        CollectionAssert.AreEqual(expected, books);
     }
 
     [TestMethod]
@@ -139,9 +149,15 @@ public class BookHandlingTests
     [DataRow("P")]
     [DataRow("j")]
     [DataRow("Prejudice")]
+    [DataRow("Ansgarsvar")] // Does not exist
     public void SearchBooks_FindByProperty_Title_FindPartialMatches(string partialTitle)
     {
+        var books = _system.SearchByTitle(partialTitle);
+        var expected = _system.GetAllBooks()
+                       .Where(b => b.Title.Contains(partialTitle))
+                       .ToList();
 
+        CollectionAssert.AreEqual(expected, books);
     }
 
     [TestMethod]
