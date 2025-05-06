@@ -6,15 +6,14 @@ namespace TestProject1;
 [TestClass]
 public class BookHandlingTests
 {
-    // Add books
-    //private Book _book;
+
     private LibrarySystem _system;
     public BookHandlingTests()
     {
-        //_book = book;
         _system = new LibrarySystem();
     }
 
+    // Add books 
     [TestMethod]
     public void AddBooksToCatalog_CanBookBeAddedToCatalog()
     {
@@ -65,11 +64,13 @@ public class BookHandlingTests
     public void RemoveBooks_LoanedOutBooks_CannotBeRemovedFromCatalog(string ISBN)
     {
         // Given a book that is loaned out
-        var books = _system.BorrowBook(ISBN);
+        var borrowed = _system.BorrowBook(ISBN);
         
-        var expected = false;
+        // Where book is not able to be removed
+        var expected = _system.RemoveBook(ISBN);
         
-        Assert.AreEqual(expected, _system.RemoveBook(ISBN));
+        // Then should fail
+        Assert.AreEqual(expected, borrowed);
     }
 
     // Search books
@@ -168,7 +169,12 @@ public class BookHandlingTests
     [DataRow("00")]
     public void SearchBooks_FindByProperty_ISBN_FindPartialMatches(string partialISBN)
     {
+        var books = _system.SearchByISBN(partialISBN);
+        var expected = _system.GetAllBooks()
+                       .Where(b => b.Title.Contains(partialISBN))
+                       .ToList();
 
+        //CollectionAssert.AreEqual(expected, books);
     }
     [TestMethod]
     [DataRow("George")]
@@ -176,8 +182,13 @@ public class BookHandlingTests
     [DataRow("Geo")]
     [DataRow("well")]
     [DataRow("o")]
-    public void SearchBooks_FindByProperty_Author_FindPartialMatches(string partialTitle)
+    public void SearchBooks_FindByProperty_Author_FindPartialMatches(string partialAuthor)
     {
+        var books = _system.SearchByAuthor(partialAuthor);
+        var expected = _system.GetAllBooks()
+                       .Where(b => b.Title.Contains(partialAuthor))
+                       .ToList();
 
+        CollectionAssert.AreEqual(expected, books);
     }
 }
