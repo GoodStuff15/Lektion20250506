@@ -132,19 +132,22 @@ namespace Lektion20250506
             if (int.TryParse(Console.ReadLine(), out int choice))
             {
                 string searchTerm;
-                List<Book> results = new List<Book>();
+                List<Book>? results = new List<Book>();
 
                 switch (choice)
                 {
                     case 1:
                         Console.Write("Enter title: ");
                         searchTerm = Console.ReadLine();
-                        results = library.SearchByTitle(searchTerm);
+                        
+                            results = library.SearchByTitle(searchTerm);
+
                         break;
                     case 2:
                         Console.Write("Enter author: ");
                         searchTerm = Console.ReadLine();
-                        results = library.SearchByAuthor(searchTerm);
+                        
+                            results = library.SearchByAuthor(searchTerm);
                         break;
                     case 3:
                         Console.Write("Enter ISBN: ");
@@ -249,16 +252,9 @@ namespace Lektion20250506
             Console.Write("Enter ISBN of book: ");
             string isbn = Console.ReadLine();
 
-            Console.Write("Enter number of days late: ");
-            if (int.TryParse(Console.ReadLine(), out int daysLate))
-            {
-                decimal fee = library.CalculateLateFee(isbn, daysLate);
-                Console.WriteLine($"Late fee: ${fee}");
-            }
-            else
-            {
-                Console.WriteLine("Invalid number of days.");
-            }
+            decimal fee = library.CalculateLateFee(isbn);
+            Console.WriteLine($"Late fee: ${fee}");
+           
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();

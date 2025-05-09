@@ -24,5 +24,27 @@ namespace Lektion20250506
             IsBorrowed = false;
             BorrowDate = null;
         }
+
+        // For testing purposes
+        public Book(string title, string author, string isbn, int publicationYear, bool isBorrowed)
+        {
+            Title = title;
+            Author = author;
+            ISBN = isbn;
+            PublicationYear = publicationYear;
+            IsBorrowed = isBorrowed;
+            BorrowDate = null;
+        }
+
+        // For testing purposes
+        public Book(string title, string author, string isbn, int publicationYear, bool isBorrowed, DateTime dateTime)
+        {
+            Title = title;
+            Author = author;
+            ISBN = isbn;
+            PublicationYear = publicationYear;
+            IsBorrowed = isBorrowed;
+            BorrowDate = dateTime;
+        }
     }
 }

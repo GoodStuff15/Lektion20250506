@@ -4,24 +4,24 @@
 
 ### 1.1 Lägga till böcker
 
-Systemet ska kunna hantera tillägg av nya böcker i bibliotekskatalogen.
+Systemet ska kunna hantera tillägg av nya böcker i bibliotekskatalogen. [X]
 
-- Varje bok måste ha ett ISBN-nummer
-- Systemet ska inte tillåta dubbletter av ISBN-nummer
+- Varje bok måste ha ett ISBN-nummer [X]
+- Systemet ska inte tillåta dubbletter av ISBN-nummer [X]
 
 ### 1.2 Ta bort böcker
 
-Systemet ska kunna hantera borttagning av böcker från bibliotekskatalogen.
+Systemet ska kunna hantera borttagning av böcker från bibliotekskatalogen. [X]
 
-- Böcker ska kunna tas bort ur systemet
-- Böcker som är utlånade ska inte kunna tas bort från systemet
+- Böcker ska kunna tas bort ur systemet [X]
+- Böcker som är utlånade ska inte kunna tas bort från systemet [X]
 
 ### 1.3 Sökning
 
-Systemet ska erbjuda flera sökfunktioner för att hitta böcker (ISBN, Titel eller författare):
+Systemet ska erbjuda flera sökfunktioner för att hitta böcker (ISBN, Titel eller författare): [X]
 
-- Sökning ska vara skiftlägesokänslig (versaler/gemener ska ge samma resultat)
-- Sökningar ska kunna hitta böcker på delmatchningar (inte bara exakta matchningar)
+- Sökning ska vara skiftlägesokänslig (versaler/gemener ska ge samma resultat) [X]
+- Sökningar ska kunna hitta böcker på delmatchningar (inte bara exakta matchningar) [X]
 
 ## 2. Utlåningssystem
 
@@ -29,16 +29,16 @@ Systemet ska erbjuda flera sökfunktioner för att hitta böcker (ISBN, Titel el
 
 Systemet ska hantera utlåning av böcker.
 
-- En bok som lånas ut ska markeras som utlånad i systemet
-- Redan utlånade böcker ska inte kunna lånas ut
-- När en bok lånas ska rätt utlåningsdatum sättas
+- En bok som lånas ut ska markeras som utlånad i systemet [X]
+- Redan utlånade böcker ska inte kunna lånas ut [X]
+- När en bok lånas ska rätt utlåningsdatum sättas [X]
 
 ### 2.2 Återlämning
 
 Systemet ska hantera återlämning av böcker.
 
-- Vid återlämning ska bokens utlåningsdatum nollställas
-- Endast utlånade böcker ska kunna återlämnas
+- Vid återlämning ska bokens utlåningsdatum nollställas [X]
+- Endast utlånade böcker ska kunna återlämnas [X]
 
 ### 2.3 Förseningshantering
 

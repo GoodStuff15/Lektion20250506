@@ -1,0 +1,23 @@
+﻿## G1. Not Null
+
+### G1.1 Making sure LibrarySystem methods are not returning null
+
+- Make sure that null values aren't returned to UI that can't handle them
+	- When searching by title
+	- When searching by author
+
+## G2. Information transfer
+
+### G2.1 User inputs
+
+- User should not be able to enter data from separate sources in one query
+	- When calculating late fee
+	- When querying catalog if a book is overdue
+
+## G3 - UI
+
+### G3.1 Error messages
+
+- Should be specific when presented to User
+
+

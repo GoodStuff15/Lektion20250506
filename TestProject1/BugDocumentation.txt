@@ -1,1 +1,119 @@
-﻿
+﻿BUG DOCUMENTATION
+
+****** Template: *******
+-------------------
+
+[Title] - [id#]
+- Environment (Class, method etc.)
+- Reproduction steps
+- Expected result
+- Actual result
+- [X] Solved (How?)
+
+
+-------------------
+[Adding Book without ISBN] - [#1]
+- LibrarySystem / AddBook()
+- Trying to add book with empty ISBN ("")
+- Expectation: - Book is not added to catalog
+- Actual result: - Book is added to catalog
+- [X] Solved: Added ISBN validation to AddBook() method.
+
+-------------------
+[Adding Book with existing ISBN] - [#2]
+- LibrarySystem / AddBook()
+- Trying to add book with ISBN that already exists in catalog
+- Expectation: Book is not added to catalog
+- Actual result: Book is added to catalog
+- [X] Solved: Added a method (DoesBookExistAlready) to verify that ISBN does not exist in catalog already.
+
+-------------------
+[Deleting Book that is currently on loan] - [#3]
+- LibrarySystem / RemoveBook()
+- Trying to remove a book that is currently marked with isBorrowed = true;
+- Expectation: Book is not removed
+- Actual result: Book is removed
+- [X] Solved: Added a isBorrowed verification to RemoveBook() method
+
+-------------------
+[Seaching by incorrect Author returns empty List] - [#3]
+- LibrarySystem / SearchByAuthor()
+- Trying to get a book by incorrect Author Name
+- Expectation: Nothing is returned
+- Actual result: An empty list is returned
+- [X] Solved: Added a not empty verification to SearchByAuthor() method
+
+-------------------
+[Seaching by incorrect Title returns empty List] - [#4]
+- LibrarySystem / SearchByAuthor()
+- Trying to get a book by incorrect Title Name
+- Expectation: Nothing is returned
+- Actual result: An empty list is returned
+- [X] Solved: Added a not empty verification to SearchByTitle() method
+
+-------------------
+[Seaching by Title is case sensitive] - [#5]
+- LibrarySystem / SearchByTitle()
+- Trying to search for books by title with DifFerEnt letter cases
+- Expectation: Books with matching title are returned
+- Actual result: Nothing is returned
+- [X] Solved: Added a string comparison to SearchByTitle() method
+
+-------------------
+[Seaching by Title does not return partial matches] - [#6]
+- LibrarySystem / SearchByTitle()
+- Trying to search for books by title with partial title
+- Expectation: Books with title containing input string are returned
+- Actual result: Nothing is returned
+- [X] Solved: Changed Equals() to Contains() in to SearchByTitle() method
+
+-------------------
+[Seaching by Title is case sensitive] - [#7]
+- LibrarySystem / SearchByTitle()
+- Trying to search for books by title with DifFerEnt letter cases
+- Expectation: Books with matching title are returned
+- Actual result: Nothing is returned
+- [X] Solved: Added a string comparison to SearchByTitle() method
+
+-------------------
+[Book borrow date is not reset when returning book] - [#8]
+- LibrarySystem / ReturnBook()
+- Returning book that is loaned out, then checking if date is reset
+- Expectation: BorrowDate of book to be null
+- Actual result: BorrowDate is date of latest loan
+- [X] Solved: Added code to reset BorrowDate to ReturnBook() method
+
+-------------------
+[Late fee is calculated incorrectly] - [#9]
+- LibrarySystem / CalculateLateFee()
+- Checking fee of book that is 8 days late
+- Expectation: Fee should be $4 (0.5 * 8)
+- Actual result: Fee is $38.5 
+- [X] Solved: Fixed calculation.
+
+
+****************************** VG BUGS *****************************
+
+-------------------
+[Able to enter incorrect number of days late when calculating late fee] - [#10]
+- LibrarySystem / CalculateLateFee()
+- Checking fee of book that is 8 days late, but entering days late as 28
+- Expectation: Fee should be $4 (0.5 * 8)
+- Actual result: Fee is $14 (0.5 * 28)
+- [X] Solved: Removed option to enter an arbitrary number for "days late" variable.
+
+-------------------
+[When searching for books with invalid input, returns null and program crashes] - [#11]
+- LibrarySystem / SearchByTitle() & SearchByAuthor
+- When searching for strings not presently in title/author of any book in catalog
+- Expectation: Should return empty
+- Actual result: Returns null
+- [X] Solved: Returns empty list instead of null.
+
+-------------------
+[Able to enter incorrect loan period when searching if a book is overdue] - [#12]
+- LibrarySystem / IsBookOverdue()
+- Checking if a book is late, but entering too low or to high number for "loan period" variable
+- Expectation: Should show that book is overdue if it has been borrowed over 30 days
+- Actual result: If loan period is entered incorrectly, returns incorrect answer
+- [X] Solved: Removed option to enter an arbitrary number for "loan period" variable.
